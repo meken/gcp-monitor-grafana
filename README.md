@@ -42,7 +42,6 @@ gcloud iam service-accounts keys create $KEY_FILE \
 Once we've got the key file we can start setting up the configuration. First let's put the secret in an environment variable so we can pass it to the `docker run` command. Since the private key contains newlines which we need to preserve, this needs some special care, all credit for the magic below goes to this [post](https://unix.stackexchange.com/questions/369972/how-can-i-set-an-environment-variable-which-contains-newline-characters).
 
 ```shell
-SA_SECRET=$(jq -r '.private_key' $KEY_FILE; echo .); SA_SECRET=${SA_SECRET%.}
 SA_SECRET=`jq -r '.private_key' $KEY_FILE`
 ```
 

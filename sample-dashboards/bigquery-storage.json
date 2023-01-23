@@ -1,0 +1,430 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 2,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "stackdriver",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "stackdriver",
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "cloud-monitoring-auto",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "editorMode": "visual",
+              "filters": [],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "bigquery.googleapis.com/storage/stored_bytes",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "preprocessor": "none",
+              "projectName": "$project",
+              "query": "",
+              "valueType": "INT64"
+            },
+            "queryType": "metrics",
+            "refId": "A"
+          }
+        ],
+        "title": "Stored Bytes",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "stackdriver",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "stackdriver",
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "cloud-monitoring-auto",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "editorMode": "visual",
+              "filters": [],
+              "groupBys": [],
+              "metricKind": "GAUGE",
+              "metricType": "bigquery.googleapis.com/storage/table_count",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "preprocessor": "none",
+              "projectName": "$project",
+              "query": "",
+              "valueType": "INT64"
+            },
+            "queryType": "metrics",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of Tables",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "stackdriver",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 5,
+        "options": {
+          "displayLabels": [],
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true,
+            "values": []
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "stackdriver",
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "cloud-monitoring-auto",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "editorMode": "visual",
+              "filters": [],
+              "groupBys": [
+                "resource.label.dataset_id"
+              ],
+              "metricKind": "GAUGE",
+              "metricType": "bigquery.googleapis.com/storage/stored_bytes",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "preprocessor": "none",
+              "projectName": "$project",
+              "query": "",
+              "valueType": "INT64"
+            },
+            "queryType": "metrics",
+            "refId": "A"
+          }
+        ],
+        "title": "Stored Bytes (Datasets)",
+        "transformations": [
+          {
+            "id": "renameByRegex",
+            "options": {
+              "regex": "bigquery.googleapis.com/storage/stored_bytes (.*)",
+              "renamePattern": "$1"
+            }
+          }
+        ],
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "stackdriver",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "stackdriver",  
+              "uid": "$datasource"
+            },
+            "metricQuery": {
+              "aliasBy": "",
+              "alignmentPeriod": "cloud-monitoring-auto",
+              "crossSeriesReducer": "REDUCE_SUM",
+              "editorMode": "visual",
+              "filters": [],
+              "groupBys": [
+                "resource.label.dataset_id"
+              ],
+              "metricKind": "GAUGE",
+              "metricType": "bigquery.googleapis.com/storage/table_count",
+              "perSeriesAligner": "ALIGN_MEAN",
+              "preprocessor": "none",
+              "projectName": "$project",
+              "query": "",
+              "valueType": "INT64"
+            },
+            "queryType": "metrics",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of Tables (Datasets)",
+        "transformations": [
+          {
+            "id": "renameByRegex",
+            "options": {
+              "regex": "bigquery.googleapis.com/storage/table_count (.*)",
+              "renamePattern": "$1"
+            }
+          }
+        ],
+        "type": "stat"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [
+        "BigQuery",
+        "Cloud Monitoring",
+        "GCP"
+      ],    
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "Google Cloud Monitoring",
+            "value": "Google Cloud Monitoring"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Datasource",
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "query": "stackdriver",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        },
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Project",
+          "multi": false,
+          "name": "project",
+          "options": [],
+          "query": {
+            "labelKey": "",
+            "loading": false,
+            "projectName": "$project",
+            "projects": [ ],
+            "selectedMetricType": "actions.googleapis.com/smarthome_action/num_active_users",
+            "selectedQueryType": "projects",
+            "selectedSLOService": "",
+            "selectedService": "actions.googleapis.com",
+            "sloServices": []
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "BigQuery Storage",
+    "uid": null,
+    "version": 1,
+    "weekStart": ""
+  }

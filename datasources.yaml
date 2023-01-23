@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: Google Cloud Monitoring
+    type: stackdriver
+    access: proxy
+    isDefault: true
+    jsonData:
+      tokenUri: https://oauth2.googleapis.com/token
+      clientEmail: $SA_GRAFANA
+      authenticationType: jwt
+      defaultProject: $PROJECT_ID
+    secureJsonData:
+      privateKey: $SA_SECRET

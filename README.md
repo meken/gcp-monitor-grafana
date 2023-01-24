@@ -59,6 +59,36 @@ docker run -d -p 3000:3000 \
     -e GF_LOG_MODE=file \
     -e GF_LOG_LEVEL=debug \
     $IMG_TAG
-````
+```
 
+## Authentication & OAuth
+
+The default username/password for Grafana is admin/admin, which you can change after first login. You can also set a strong password and pass that as an enviroment variable. You can make up a strong password yourself, or use a utility. The example below uses `openssl`, but you could use anything you like.
+
+```shell
+GRAFANA_ADMIN_PASSWORD=`openssl rand -base64 32`
+
+docker run -d -p 3000:3000 \
+    -e GF_SECURITY_ADMIN_PASSWORD="$GRAFANA_ADMIN_PASSWORD" \
+    ...  # set other environment variables too
+    $IMG_TAG
+```
+
+Additionally you can give access to users through Google Cloud OAuth2 as described in the Grafana [docs](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/). Follow the instructions to create the OAuth keys (after having configured the consent screen). Once you've downloaded the keys, you can pass the configuration again as environment variables instead of editing the `grafana.ini` config file.
+
+```shell
+OAUTH_CLIENT_ID=...  
+OAUTH_CLIENT_SECRET=...  
+OAUTH_AUTH_URL="https://accounts.google.com/o/oauth2/auth"
+OAUTH_TOKEN_URL="https://accounts.google.com/o/oauth2/token"
+
+docker run -d -p 3000:3000 \
+    -e GF_AUTH_GOOGLE_ENABLED="true" \
+    -e GF_AUTH_GOOGLE_CLIENT_ID="$OAUTH_CLIENT_ID" \
+    -e GF_AUTH_GOOGLE_CLIENT_SECRET="$OAUTH_CLIENT_SECRET" \
+    -e GF_AUTH_GOOGLE_AUTH_URL="$OAUTH_AUTH_URL" \
+    -e GF_AUTH_GOOGLE_TOKEN_URL="$OAUTH_TOKEN_URL" \
+    ...  # set other environment variables too
+    $IMG_TAG
+```
 
